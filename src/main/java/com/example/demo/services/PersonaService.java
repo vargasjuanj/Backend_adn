@@ -412,12 +412,16 @@ public void contar(boolean human) {
 		statsRepository.save(st);
 	}
 
-	public StatsDTO getStats() {
+public StatsDTO getStats() {
 		StatsDTO dto = new StatsDTO();
 		Stats st = new Stats();
-		Optional<Stats> sto = statsRepository.findById(1);
+		List<Stats> stl;
+		
+
+		
 		try {
-			st = sto.get();
+			stl=statsRepository.findAll();
+		st=sto.get(0);
 			dto.setCount_human_dna(st.getCount_human_dna());
 			dto.setCount_mutant_dna(st.getCount_mutant_dna());
 			dto.setRatio(st.getRatio());
@@ -428,5 +432,6 @@ public void contar(boolean human) {
 		}
 
 	}
+
 
 }
